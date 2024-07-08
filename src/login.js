@@ -40,13 +40,13 @@ const Login = (props) => {
           // Redireccionar según el roleId
           switch (result.data.rolId) {
             case 1:
-              setRedirect('/inicio_a'); // Ruta para roleId 1
+              setRedirect('/admin/inicio_a'); // Ruta para roleId 1
               break;
             case 2:
-              setRedirect('/inicio_pro'); // Ruta para roleId 2
+              setRedirect('/padres/inicio_pa'); // Ruta para roleId 2
               break;
             case 3:
-              setRedirect('/inicio_pa'); // Ruta para roleId 3
+              setRedirect('/profesores/inicio_pro'); // Ruta para roleId 3
               break;
           }
 

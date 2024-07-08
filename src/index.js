@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './home';
 import Login from './login';
-import InicioA from './inicio_a';
-import InicioPa from './inicio_pa';
-import InicioPro from './inicio_pro';
+import InicioA from './admin/inicio_a';
+import InicioPa from './padres/inicio_pa';
+import InicioPro from './profesores/inicio_pro';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

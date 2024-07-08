@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, useNavigate } from 'react-router-dom'
 import Login from './login'
-import InicioA from './inicio_a'
+import InicioA from './admin/inicio_a'
 const Home = (props) => {
   const { loggedIn, email } = props
   const navigate = useNavigate()

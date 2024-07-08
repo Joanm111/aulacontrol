@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './home'
 import Login from './login'
-import InicioA from './inicio_a'
+import InicioA from './admin/inicio_a'
 import './App.css'
 import { useEffect, useState } from 'react'
-import InicioPro from './inicio_pro'
-import InicioPa from './inicio_pa'
+import InicioPro from './profesores/inicio_pro'
+import InicioPa from './padres/inicio_pa'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -46,16 +46,16 @@ function App() {
           <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
 
           <Route
-            path="/inicio_a"
+            path="/admin/inicio_a"
             element={<InicioA email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           />
                    <Route
-            path="/inicio_pa"
+            path='/padres/inicio_pa'
             element={<InicioPa email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           />
 
                    <Route
-            path="/inicio_pro"
+            path='/profesores/inicio_pro'
             element={<InicioPro email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           />
           

@@ -1,0 +1,103 @@
+/* estilos.css */
+/* src/index.css o src/App.css */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* estilos.css */
+
+body {
+  background-color: #f0f0f0; /* Color de fondo para todo el cuerpo */
+}
+
+.sidebar {
+  width: 200px; /* Ancho del sidebar */
+  height: 100%; /* Altura completa del sidebar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100; /* Asegura que esté por encima del contenido principal */
+  overflow-y: auto; /* Permite hacer scroll en caso de contenido largo */
+  background-color: #343a40; /* Color de fondo del sidebar */
+  padding-top: 20px; /* Espacio superior */
+}
+
+.sidebar-content {
+  padding: 0 15px;
+}
+
+.sidebar .btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  margin-left: 200px; /* Espacio a la izquierda del contenido principal */
+  padding: 20px; /* Espaciado interno */
+}
+
+.card {
+  border-radius: 10px; /* Bordes redondeados para las tarjetas */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.text-white {
+  color: white; /* Texto blanco */
+}
+
+.title {
+  margin-left: 200px; /* Ajusta este valor según sea necesario */
+  margin-top: 20px; /* Espacio adicional superior para mover el texto hacia abajo */
+}
+
+.cards-container {
+  justify-content: flex-end; /* Justifica las cards a la derecha */
+}
+
+.card-container {
+  flex: 0 0 22%; /* Ajusta el tamaño de las cards */
+  max-width: 4.5cm;
+  margin: 0 0.5rem; /* Reducir el espacio entre las cards */
+}
+
+
+.latest-tables {
+  margin-top: 1cm;
+  margin-left: 200px;
+}
+
+.latest-tables h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.table {
+  margin-bottom: 200px;
+}
+
+.table th, .table td {
+  text-align: center;
+}
+
+.table thead th {
+  background-color: #454d55;
+  color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-dark {
+  color: #fff;
+  background-color: #212529;
+}
+
+.table-dark th, .table-dark td, .table-dark thead th {
+  border-color: #32383e;
+}
+
+.table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
