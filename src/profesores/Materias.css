@@ -1,0 +1,109 @@
+/* Profe.css */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Profe.css */
+
+/* General styles */
+.container {
+    margin-top: 20px;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* Button styles */
+  .btn {
+    margin-right: 10px;
+  }
+  
+  .btn:last-child {
+    margin-right: 0;
+  }
+  
+  /* Form styles */
+  .card {
+    margin-top: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 1rem;
+  }
+  
+  .form-group input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .form-group input[type="number"]::-webkit-outer-spin-button,
+  .form-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  button[type="submit"] {
+    margin-right: 10px;
+  }
+  
+  button[type="button"] {
+    margin-left: 10px;
+  }
+  
+  /* Specific styles for action buttons */
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .btn:hover {
+    filter: brightness(90%);
+  }
+
+  
+  /* En Materias.css */
+.btn-primary {
+    margin-top: 10px;
+  }
+  
+  /* Ajustes adicionales para mejorar visibilidad del select */
+  .form-control {
+    background-color: #fff; /* Color de fondo del select */
+    color: #495057; /* Color del texto del select */
+    border-color: #ced4da; /* Color del borde del select */
+  }
+  

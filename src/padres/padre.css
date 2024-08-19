@@ -101,3 +101,21 @@ body {
 .table-dark.table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(255, 255, 255, 0.05);
 }
+
+.chart-container-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Alinea las gráficas a la derecha */
+  gap: 20px; /* Espacio entre las gráficas */
+  margin-left: 600px; /* Ajusta la distancia al borde derecho */
+}
+
+.chart-container {
+  max-width: 300px; /* Ancho máximo para cada gráfica */
+}
+
+.student-id-container {
+  display: flex;
+  justify-content: flex-end; /* Mueve el Estudiante ID a la derecha */
+  margin-right: 720px; /* Ajusta la distancia al borde derecho */
+}
+

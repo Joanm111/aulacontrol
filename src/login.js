@@ -1,19 +1,18 @@
-import React, { Router,useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 
-const Login = (props) => {
-  const [email, setEmail] = useState('');
+const Login = ({ setEmail, setLoggedIn }) => {
+  const [localEmail, setLocalEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [redirect, setRedirect] = useState(null);
 
   const onButtonClick = () => {
-    // Validaciones opcionales de email y password
     let valid = true;
 
-    if (!email) {
+    if (!localEmail) {
       setEmailError('Email is required');
       valid = false;
     } else {
@@ -29,37 +28,40 @@ const Login = (props) => {
 
     if (valid) {
       const data = {
-        Correo: email,
+        Correo: localEmail,
         Contrasena: password,
       };
 
       const url = "https://localhost:44311/Usuarios/login";
       axios.post(url, data)
         .then((result) => {
+          // Guardar el correo electrónico del usuario en localStorage
+          localStorage.setItem('userEmail', localEmail);
+          setEmail(localEmail);
+          setLoggedIn(true);
 
-          // Redireccionar según el roleId
+          // Redirigir según el rol del usuario
           switch (result.data.rolId) {
             case 1:
-              setRedirect('/admin/inicio_a'); // Ruta para roleId 1
-              break;
-            case 2:
-              setRedirect('/padres/inicio_pa'); // Ruta para roleId 2
+              setRedirect('/admin/inicio_a');
               break;
             case 3:
-              setRedirect('/profesores/inicio_pro'); // Ruta para roleId 3
+              setRedirect('/padres/inicio_pa');
+              break;
+            case 2:
+              setRedirect('/profesores/inicio_pro');
+              break;
+            default:
+              setRedirect('/'); // Redirigir a la página por defecto si no hay un caso definido
               break;
           }
 
-          // Reiniciar los campos después de la solicitud exitosa
-         
           setPassword('');
         })
         .catch((error) => {
           console.log(error);
           if (error.response && error.response.status === 404) {
             alert('Correo o contraseña incorrectos');
-            // Limpiar los campos en caso de error
-           
             setPassword('');
           } else {
             alert('Error: ' + error.message);
@@ -68,7 +70,6 @@ const Login = (props) => {
     }
   };
 
-  // Si hay una redirección programada, Navigate redirigirá automáticamente
   if (redirect) {
     return <Navigate to={redirect} />;
   }
@@ -89,9 +90,9 @@ const Login = (props) => {
       <br />
       <div className={'inputContainer'}>
         <input
-          value={email}
+          value={localEmail}
           placeholder="Enter your email here"
-          onChange={(ev) => setEmail(ev.target.value)}
+          onChange={(ev) => setLocalEmail(ev.target.value)}
           className={'inputBox'}
         />
         <label className="errorLabel">{emailError}</label>

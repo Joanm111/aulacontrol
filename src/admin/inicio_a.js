@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './estilos.css'
+import './estilos.css'; // Asegúrate de que estilos.css esté en la misma ubicación que este archivo
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const InicioA = ({ email, setLoggedIn }) => {
@@ -15,10 +15,12 @@ const InicioA = ({ email, setLoggedIn }) => {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const studentsResponse = await axios.get('https://localhost:44311/padres');
-        const teachersResponse = await axios.get('https://localhost:44311/Profesors');
-        const coursesResponse = await axios.get('https://localhost:44311/Cursoes');
-        const usersResponse = await axios.get('https://localhost:44311/Usuarios');
+        const [studentsResponse, teachersResponse, coursesResponse, usersResponse] = await Promise.all([
+          axios.get('https://localhost:44311/padres'),
+          axios.get('https://localhost:44311/Profesors'),
+          axios.get('https://localhost:44311/grado'),
+          axios.get('https://localhost:44311/Usuarios')
+        ]);
 
         const studentCount = studentsResponse.data.length;
         const teacherCount = teachersResponse.data.length;
@@ -29,14 +31,38 @@ const InicioA = ({ email, setLoggedIn }) => {
         setUsersCount(studentCount + teacherCount);
         setCoursesCount(courseCount);
 
-        const combinedUsers = usersResponse.data.map(user => ({
-          id: user.id,
-          nombre: user.correo, // Aquí tomamos el correo para mostrar como nombre
-          correo: user.correo,
-          role: user.rol.nombre
-        }));
+        const usersData = usersResponse.data;
+        const usersCombined = [];
 
-        setUsers(combinedUsers.slice(0, 5));
+        // Obtener padres y sus correos correspondientes
+        const parentsResponse = await axios.get('https://localhost:44311/padres');
+        parentsResponse.data.forEach(parent => {
+          const user = usersData.find(u => u.id === parent.usuarioId);
+          if (user) {
+            usersCombined.push({
+              id: user.id,  // Cambia a user.id
+              nombre: parent.nombre,
+              correo: user.correo,
+              role: 'Padre'
+            });
+          }
+        });
+
+        // Obtener profesores y sus correos correspondientes
+        const teachersDataResponse = await axios.get('https://localhost:44311/profesors');
+        teachersDataResponse.data.forEach(teacher => {
+          const user = usersData.find(u => u.id === teacher.usuarioId);
+          if (user) {
+            usersCombined.push({
+              id: user.id,  // Cambia a user.id
+              nombre: teacher.nombre,
+              correo: user.correo,
+              role: 'Profesor'
+            });
+          }
+        });
+
+        setUsers(usersCombined.slice(0, 5));
       } catch (error) {
         console.error('Error fetching counts:', error);
       }
@@ -52,76 +78,60 @@ const InicioA = ({ email, setLoggedIn }) => {
   };
 
   return (
-    <div className="container-fluid" style={{ backgroundColor: '#2bb89e', minHeight: '100vh' }}>
+    <div className="container-fluid" style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <div className="row">
         {/* Sidebar fijo a la izquierda */}
-        <nav className="col-md-2 d-md-block sidebar">
+        <nav className="col-md-2 d-md-block sidebar bg-dark">
           <div className="sidebar-content">
             <h2 className="text-white text-center mb-4">Admin Panel</h2>
-            <button className="btn btn-primary btn-block mb-3" onClick={() => navigate('/admin/inicio_a')}>
+            <button className="btn btn-outline-light btn-block mb-3" onClick={() => navigate('/admin/inicio_a')}>
               Dashboard
             </button>
-            <button className="btn btn-primary btn-block mb-3" onClick={() => navigate('/admin/users')}>
+            <button className="btn btn-outline-light btn-block mb-3" onClick={() => navigate('/admin/padres')}>
               Padres
             </button>
-            <button className="btn btn-primary btn-block mb-3" onClick={() => navigate('/admin/settings')}>
+            <button className="btn btn-outline-light btn-block mb-3" onClick={() => navigate('/admin/profesores')}>
               Profesores
             </button>
-            <button className="btn btn-primary btn-block mb-3" onClick={() => navigate('/admin/courses')}>
-              Cursos
+            <button className="btn btn-outline-light btn-block mb-3" onClick={() => navigate('/admin/cursos')}>
+              Grados
             </button>
             <button className="btn btn-danger btn-block" onClick={onLogout}>
               Log out
             </button>
             <div className="user-info mt-4">
-              <p className="text-white text-center">{email}</p>
+              <p className="text-light text-center">{email}</p>
             </div>
           </div>
         </nav>
         
         {/* Contenido principal */}
         <main className="col-md-10 d-flex flex-column align-items-start justify-content-start pt-3 pb-2 mb-3">
-          <h1 className="text-white mb-4 title">Bienvenido ADMINISTRADOR</h1>
-          <div className="d-flex flex-wrap justify-content-end w-100 cards-container">
-            <div className="card-container mb-4">
-              <div className="card bg-primary text-white h-100">
-                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                  <h3 className="card-title">Padres</h3>
-                  <p className="card-text">{studentsCount}</p>
-                </div>
-              </div>
+          <h1 className="text-dark mb-4 title">Bienvenido ADMINISTRADOR</h1>
+          <div className="d-flex justify-content-between cards-container">
+            <div className="card card-blue">
+              <h3 className="card-title">Cantidad de Padres</h3>
+              <div className="card-content">{studentsCount}</div>
             </div>
-            <div className="card-container mb-4">
-              <div className="card bg-success text-white h-100">
-                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                  <h3 className="card-title">Profesores</h3>
-                  <p className="card-text">{teachersCount}</p>
-                </div>
-              </div>
+            <div className="card card-green">
+              <h3 className="card-title">Cantidad de Profesores</h3>
+              <div className="card-content">{teachersCount}</div>
             </div>
-            <div className="card-container mb-4">
-              <div className="card bg-info text-white h-100">
-                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                  <h3 className="card-title">Usuarios</h3>
-                  <p className="card-text">{usersCount}</p>
-                </div>
-              </div>
+            <div className="card card-orange">
+              <h3 className="card-title">Cantidad de Usuarios</h3>
+              <div className="card-content">{usersCount}</div>
             </div>
-            <div className="card-container mb-4">
-              <div className="card bg-warning text-white h-100">
-                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                  <h3 className="card-title">Cursos</h3>
-                  <p className="card-text">{coursesCount}</p>
-                </div>
-              </div>
+            <div className="card card-red">
+              <h3 className="card-title">Cantidad de Grados</h3>
+              <div className="card-content">{coursesCount}</div>
             </div>
           </div>
           
           {/* Tabla de usuarios */}
           <div className="latest-tables w-100">
-            <h2 className="text-white">Últimos Usuarios Agregados</h2>
-            <table className="table table-dark table-striped">
-              <thead>
+            <h2 className="text-dark">Últimos Usuarios Agregados</h2>
+            <table className="table table-striped">
+              <thead className="thead-dark">
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
@@ -141,7 +151,6 @@ const InicioA = ({ email, setLoggedIn }) => {
               </tbody>
             </table>
           </div>
-      
         </main>
       </div>
     </div>

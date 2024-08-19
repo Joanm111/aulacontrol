@@ -36,10 +36,12 @@ body {
 
 .card {
   border-radius: 10px; /* Bordes redondeados para las tarjetas */
+  margin-right: 1rem;
 }
 
 .card-body {
   padding: 20px;
+  
 }
 
 .text-white {
@@ -51,16 +53,12 @@ body {
   margin-top: 20px; /* Espacio adicional superior para mover el texto hacia abajo */
 }
 
-.cards-container {
-  justify-content: flex-end; /* Justifica las cards a la derecha */
-}
-
 .card-container {
   flex: 0 0 22%; /* Ajusta el tamaño de las cards */
   max-width: 4.5cm;
   margin: 0 0.5rem; /* Reducir el espacio entre las cards */
+  margin-left: 0; /* Elimina el margen izquierdo para mover las cards hacia la izquierda */
 }
-
 
 .latest-tables {
   margin-top: 1cm;
@@ -99,5 +97,109 @@ body {
 }
 
 .table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para ParentsManager */
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Estilos específicos para los botones de acción en la tabla */
+.table-actions button {
+  margin-right: 5px;
+}
+
+
+/* Profe.css */
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #343a40; /* bg-dark */
+  color: white;
+  padding-top: 20px;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.card-blue {
+  background-color: #007bff;
+}
+
+.card-green {
+  background-color: #28a745;
+}
+
+.card-orange {
+  background-color: #8496a0;
+}
+
+.card-red {
+  background-color: #ff909b;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  font-size: 2em;
+}
+
+.table-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(255, 255, 255, 0.05);
 }

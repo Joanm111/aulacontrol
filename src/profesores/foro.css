@@ -1,0 +1,130 @@
+/* General container for the forum */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.forum-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3, h4 {
+  color: #333;
+}
+
+/* Style for the topic list */
+.topic-list .list-group-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Style for the comment section */
+.comments-section {
+  margin-top: 30px;
+}
+
+.comments-section .list-group-item {
+  border: none;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Remove hover effect on comments */
+.list-group-item:hover {
+  background-color: transparent;
+  cursor: default;
+  color: inherit;
+}
+
+.comment-content {
+  word-wrap: break-word; /* Asegura que el texto largo se ajuste */
+  overflow-wrap: break-word; /* Para manejar el desbordamiento */
+  padding: 10px;
+  max-width: 100%;
+  display: inline-block; /* Hace que el contenido del mensaje se ajuste a su tamaño */
+
+}
+
+.text-right .comment-content {
+  background-color: #007bff;
+  color: white;
+  text-align: right; /* Alinea el texto a la derecha para el usuario */
+  border-radius: 8px;
+}
+
+.text-left .comment-content {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Remove any transition effects */
+.comment-content {
+  transition: none;
+}
+
+/* Style for the date text in comments */
+.message-date {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Input and button styles for adding new comments */
+.create-comment .input-group {
+  margin-top: 20px;
+}
+
+.create-comment .form-control {
+  border-radius: 20px 0 0 20px;
+  border-right: none;
+}
+
+.create-comment .input-group-append .btn {
+  border-radius: 0 20px 20px 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Style for the topic title */
+.topic-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.topic-details {
+  font-size: 14px;
+  color: #777;
+}

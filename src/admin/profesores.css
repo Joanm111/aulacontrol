@@ -1,0 +1,101 @@
+/* Estilos para el Gestor de Profesores */
+
+/* Estilo para el contenedor principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para los encabezados */
+  h1,
+  h2 {
+    color: #007bff;
+  }
+  
+  /* Estilo para la tabla de profesores */
+  .table {
+    margin-top: 20px;
+  }
+  
+  /* Estilo para filas impares en la tabla */
+  .table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilo para los botones de acción en la tabla */
+  .table .btn {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  /* Estilo para los botones de acción */
+  .btn {
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  /* Estilo para los botones de acción de modificar, eliminar y ver estudiantes */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  
+  /* Estilo para filas impares en la tabla de estudiantes */
+  .table-course-students tbody tr:nth-child(odd) {
+    background-color: #e9ecef;
+  }
+  
+  /* Estilo para los encabezados de la tabla de estudiantes */
+  .table-course-students th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Estilo para las celdas de los botones en la tabla de estudiantes */
+  .table-course-students .btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  
+  /* Estilo para los botones de acción en la tabla de estudiantes */
+  .table-course-students .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .table-course-students .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .table-course-students .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  
+  .table-course-students .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .table-course-students .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  

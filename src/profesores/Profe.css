@@ -1,8 +1,5 @@
-/* estilos.css */
-/* src/index.css o src/App.css */
+/* Estilos generales */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
-/* estilos.css */
 
 body {
   background-color: #f0f0f0; /* Color de fondo para todo el cuerpo */
@@ -36,6 +33,10 @@ body {
 
 .card {
   border-radius: 10px; /* Bordes redondeados para las tarjetas */
+  background-color: #007bff; /* Color de fondo de las cards (azul) */
+  color: white; /* Texto en color blanco */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 20px;
 }
 
 .card-body {
@@ -52,15 +53,17 @@ body {
 }
 
 .cards-container {
-  justify-content: flex-end; /* Justifica las cards a la derecha */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 1rem;
+  margin-left: 14rem;
 }
 
-.card-container {
-  flex: 0 0 22%; /* Ajusta el tamaño de las cards */
-  max-width: 4.5cm;
-  margin: 0 0.5rem; /* Reducir el espacio entre las cards */
+.card {
+  flex: 1 1 calc(33.33% - 20px);
+  max-width: 250px; /* Ajusta el ancho máximo de las cards según sea necesario */
 }
-
 
 .latest-tables {
   margin-top: 1cm;
@@ -76,7 +79,8 @@ body {
   margin-bottom: 200px;
 }
 
-.table th, .table td {
+.table th,
+.table td {
   text-align: center;
 }
 
@@ -94,10 +98,68 @@ body {
   background-color: #212529;
 }
 
-.table-dark th, .table-dark td, .table-dark thead th {
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
   border-color: #32383e;
 }
 
 .table-dark.table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para ParentsManager */
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Estilos específicos para los botones de acción en la tabla */
+.table-actions button {
+  margin-right: 5px;
+}
+
+.card-blue {
+  background-color: #007bff;
+  color: white;
+}
+
+.card-green {
+  background-color: #28a745;
+  color: white;
+}
+
+.card-orange {
+  background-color: #8d4509;
+  color: white;
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+.sidebar-content .btn {
+  margin-bottom: 10px;
 }
