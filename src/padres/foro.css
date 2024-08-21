@@ -1,4 +1,4 @@
-/* General container for the forum */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,7 +15,7 @@ h2, h3, h4 {
   color: #333;
 }
 
-/* Style for the topic list */
+
 .topic-list .list-group-item {
   padding: 15px;
   margin-bottom: 10px;
@@ -23,7 +23,6 @@ h2, h3, h4 {
   border-radius: 5px;
 }
 
-/* Style for the comment section */
 .comments-section {
   margin-top: 30px;
 }
@@ -34,7 +33,7 @@ h2, h3, h4 {
   border-bottom: 1px solid #ddd;
 }
 
-/* Remove hover effect on comments */
+
 .list-group-item:hover {
   background-color: transparent;
   cursor: default;
@@ -42,18 +41,18 @@ h2, h3, h4 {
 }
 
 .comment-content {
-  word-wrap: break-word; /* Asegura que el texto largo se ajuste */
-  overflow-wrap: break-word; /* Para manejar el desbordamiento */
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
   padding: 10px;
   max-width: 100%;
-  display: inline-block; /* Hace que el contenido del mensaje se ajuste a su tamaño */
+  display: inline-block; 
 
 }
 
 .text-right .comment-content {
   background-color: #007bff;
   color: white;
-  text-align: right; /* Alinea el texto a la derecha para el usuario */
+  text-align: right; 
   border-radius: 8px;
 }
 
@@ -62,18 +61,17 @@ h2, h3, h4 {
   color: #333;
 }
 
-/* Remove any transition effects */
+
 .comment-content {
   transition: none;
 }
 
-/* Style for the date text in comments */
 .message-date {
   font-size: 12px;
   color: #666;
 }
 
-/* Input and button styles for adding new comments */
+
 .create-comment .input-group {
   margin-top: 20px;
 }
@@ -117,7 +115,6 @@ h2, h3, h4 {
   border-color: #bd2130;
 }
 
-/* Style for the topic title */
 .topic-title {
   font-size: 18px;
   font-weight: bold;

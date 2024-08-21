@@ -19,37 +19,37 @@
   .calendar-table th,
   .calendar-table td {
     border: 1px solid #dee2e6;
-    width: 14.2857%; /* 1/7 to make the cells equal width */
+    width: 14.2857%; 
     height: 100px;
     text-align: center;
     vertical-align: middle;
   }
   
   .calendar-table td.attended {
-    background-color: #c8e6c9; /* Light green to indicate attendance */
+    background-color: #c8e6c9; 
   }
   
   .calendar-table td.empty {
-    background-color: #f5f5f5; /* Light grey for empty cells */
+    background-color: #f5f5f5; 
   }
   
   .present {
-    background-color: #75d678 !important; /* Verde claro para presente */
-    color: #000000 !important; /* Verde oscuro para el texto */
+    background-color: #75d678 !important; 
+    color: #000000 !important; 
   }
   
   .late {
-    background-color: #84eeee !important; /* Amarillo claro para tarde */
-    color: #000000 !important; /* Amarillo oscuro para el texto */
+    background-color: #84eeee !important; 
+    color: #000000 !important; 
   }
   
   .absent {
-    background-color: #ee727e !important; /* Rojo claro para ausente */
-    color: #000000 !important; /* Rojo oscuro para el texto */
+    background-color: #ee727e !important; 
+    color: #000000 !important; 
   }
   
   .empty {
-    background-color: #f5f5f5 !important; /* Gris claro para días vacíos */
+    background-color: #f5f5f5 !important; 
   }
   
   .calendar-table td {

@@ -27,9 +27,9 @@ const ForoPRO = () => {
     if (selectedTopic) {
       const intervalId = setInterval(() => {
         fetchComments(selectedTopic);
-      }, 5000); // Polling every 5 seconds
+      }, 5000); 
 
-      return () => clearInterval(intervalId); // Cleanup interval on unmount
+      return () => clearInterval(intervalId); 
     }
   }, [selectedTopic]);
 
@@ -98,12 +98,12 @@ const ForoPRO = () => {
     try {
       const newTopicData = {
         titulo: newTopic,
-        gradoId: 1, // Reemplazar con el valor dinámico real
-        profesorId: 1, // Reemplazar con el valor dinámico real
+        gradoId: 1, 
+        profesorId: 1, 
       };
       await axios.post('https://localhost:44311/Foroes', newTopicData);
       setNewTopic('');
-      fetchTopics(); // Actualizar la lista de temas
+      fetchTopics(); 
     } catch (error) {
       console.error('Error creating topic:', error);
     }
@@ -125,11 +125,11 @@ const ForoPRO = () => {
         foroId: selectedTopic,
         usuarioId: userId,
         comentario: newComment,
-        fecha: new Date().toISOString().split('T')[0], // Fecha en formato YYYY-MM-DD
+        fecha: new Date().toISOString().split('T')[0], 
       };
       await axios.post('https://localhost:44311/ComentarioForoes', newCommentData);
       setNewComment('');
-      fetchComments(selectedTopic); // Actualizar la lista de comentarios
+      fetchComments(selectedTopic); 
     } catch (error) {
       console.error('Error creating comment:', error);
     }
@@ -137,27 +137,27 @@ const ForoPRO = () => {
 
   const handleDeleteTopic = async (topicId) => {
     try {
-      // Obtener los comentarios del tema para obtener sus IDs
+      
       const response = await axios.get(`https://localhost:44311/ComentarioForoes?foroId=${topicId}`);
       const commentIds = response.data.map(comment => comment.id);
 
-      // Eliminar cada comentario individualmente
+      
       await Promise.all(commentIds.map(commentId =>
         axios.delete(`https://localhost:44311/ComentarioForoes/${commentId}`)
       ));
 
-      // Finalmente, eliminar el tema
+      
       await axios.delete(`https://localhost:44311/Foroes/${topicId}`);
 
-      fetchTopics(); // Actualizar la lista de temas
-      setSelectedTopic(null); // Limpiar selectedTopic para ocultar los comentarios
+      fetchTopics(); 
+      setSelectedTopic(null);
     } catch (error) {
       console.error('Error deleting topic and comments:', error);
     }
   };
 
   const handleCloseComments = () => {
-    setSelectedTopic(null); // Limpiar selectedTopic para ocultar los comentarios
+    setSelectedTopic(null);
   };
 
   const getUserName = (usuarioId) => {

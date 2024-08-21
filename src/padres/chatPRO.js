@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faPaperPlane, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import './chat.css';
 
 const ChatPRO = () => {
   const [students, setStudents] = useState([]);
@@ -105,7 +104,7 @@ const ChatPRO = () => {
       const filteredMessages = response.data.filter(message => message.chatId === chatId);
       setMessages(filteredMessages);
       if (autoScroll) {
-        scrollToBottom(); // Desplazarse automáticamente si está habilitado
+        scrollToBottom(); 
       }
     } catch (error) {
       console.error('Error fetching messages:', error);
@@ -152,7 +151,7 @@ const ChatPRO = () => {
     if (scrollTop + clientHeight < scrollHeight - 10) {
       setAutoScroll(false);
     } else {
-      setAutoScroll(true); // Reactivar el scroll automático si está en el fondo
+      setAutoScroll(true); 
     }
   };
 

@@ -15,37 +15,37 @@ const InicioPro = () => {
   const [teacherName, setTeacherName] = useState('');
 
   useEffect(() => {
-    // Verificar si hay un usuario autenticado al cargar el componente
+   
     const storedUserEmail = localStorage.getItem('userEmail');
     if (!storedUserEmail) {
-      navigate('/login'); // Redirigir al inicio de sesión si no hay usuario autenticado
+      navigate('/login'); 
       return;
     }
 
-    setUserEmail(storedUserEmail); // Establecer el correo electrónico desde localStorage
+    setUserEmail(storedUserEmail); 
 
-    // Función para cargar datos del usuario, profesor y estudiantes
+  
     const fetchData = async () => {
       try {
-        // Obtener usuario del endpoint de usuarios
+     
         const usersResponse = await axios.get('https://localhost:44311/usuarios');
         const user = usersResponse.data.find(u => u.correo === storedUserEmail);
 
         if (user) {
-          // Obtener profesor del endpoint de profesores
+         
           const teachersResponse = await axios.get('https://localhost:44311/profesors');
           const teacher = teachersResponse.data.find(t => t.usuarioId === user.id);
 
           if (teacher) {
             setTeacherId(teacher.id);
-            setTeacherName(teacher.nombre); // Establecer el nombre del profesor
+            setTeacherName(teacher.nombre); 
 
-            // Obtener estudiantes del grado del profesor
+         
             const studentsResponse = await axios.get('https://localhost:44311/estudiantes');
             const studentsInGrade = studentsResponse.data.filter(student => student.gradoId === teacher.gradoId);
             setStudentsCount(studentsInGrade.length);
 
-            // Obtener el nombre del grado del profesor
+          
             const gradesResponse = await axios.get('https://localhost:44311/grado');
             const gradeForTeacher = gradesResponse.data.find(grade => grade.id === teacher.gradoId);
             if (gradeForTeacher) {
@@ -66,7 +66,7 @@ const InicioPro = () => {
   }, [navigate]);
 
   const onLogout = () => {
-    // Limpiar el almacenamiento local y cerrar sesión
+   
     localStorage.removeItem('userEmail');
     navigate('/login');
   };
@@ -78,7 +78,7 @@ const InicioPro = () => {
   return (
     <div className="container-fluid" style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <div className="row">
-        {/* Sidebar fijo a la izquierda */}
+      
         <nav className="col-md-2 d-md-block sidebar bg-dark">
           <div className="sidebar-content">
             <h2 className="text-white text-center mb-4">Profesor Panel</h2>
@@ -100,7 +100,7 @@ const InicioPro = () => {
           </div>
         </nav>
 
-        {/* Contenido principal */}
+    
         <main className="col-md-10 d-flex flex-column align-items-start justify-content-start pt-3 pb-2 mb-3">
           <h1 className="text-dark mb-4 title">Bienvenido, {teacherName}</h1>
           <div className="d-flex justify-content-between cards-container">
@@ -118,7 +118,6 @@ const InicioPro = () => {
             </div>
           </div>
 
-          {/* Tabla de estudiantes */}
           <div className="latest-tables w-100">
             <h2 className="text-dark">Mis estudiantes</h2>
             <table className="table table-striped">

@@ -15,7 +15,7 @@ const ParentsManager = () => {
   useEffect(() => {
     fetchParents();
     fetchStudents();
-    resetFields(); // Resetea los campos cuando se carga el componente
+    resetFields(); 
   }, []);
 
   const resetFields = () => {
@@ -84,7 +84,7 @@ const ParentsManager = () => {
 
       await axios.post('https://localhost:44311/padres', newParentData);
       fetchParents();
-      resetFields(); // Resetea los campos después de agregar un nuevo padre
+      resetFields(); 
     } catch (error) {
       console.error('Error al agregar el padre:', error);
       alert('Hubo un error al agregar el padre. Por favor intenta nuevamente.');
@@ -122,7 +122,7 @@ const ParentsManager = () => {
       await axios.put(`https://localhost:44311/padres/${selectedParentId}`, updatedParentData);
 
       fetchParents();
-      resetFields(); // Resetea los campos después de actualizar un padre
+      resetFields(); 
       setSelectedParentId(null);
       setSelectedUserId(null);
     } catch (error) {
@@ -227,7 +227,7 @@ const ParentsManager = () => {
               <button type="button" className="btn btn-secondary" onClick={() => { 
                 setSelectedParentId(null); 
                 setSelectedUserId(null);
-                resetFields(); // Resetea los campos al cancelar la edición
+                resetFields(); 
               }}>Cancelar</button>
             </>
           )}

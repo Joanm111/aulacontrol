@@ -35,12 +35,12 @@ const Login = ({ setEmail, setLoggedIn }) => {
       const url = "https://localhost:44311/Usuarios/login";
       axios.post(url, data)
         .then((result) => {
-          // Guardar el correo electrónico del usuario en localStorage
+         
           localStorage.setItem('userEmail', localEmail);
           setEmail(localEmail);
           setLoggedIn(true);
 
-          // Redirigir según el rol del usuario
+        
           switch (result.data.rolId) {
             case 1:
               setRedirect('/admin/inicio_a');
@@ -52,7 +52,7 @@ const Login = ({ setEmail, setLoggedIn }) => {
               setRedirect('/profesores/inicio_pro');
               break;
             default:
-              setRedirect('/'); // Redirigir a la página por defecto si no hay un caso definido
+              setRedirect('/'); 
               break;
           }
 

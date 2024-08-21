@@ -101,7 +101,7 @@ const TeachersManager = () => {
   const handleEditTeacher = async (e) => {
     e.preventDefault();
     try {
-      // Actualiza la información del profesor
+      
       await axios.put(`https://localhost:44311/Profesors/${editingTeacher.id}`, {
         id: editingTeacher.id,
         nombre: newTeacher.nombre,
@@ -110,20 +110,20 @@ const TeachersManager = () => {
         gradoId: selectedGradeId,
       });
 
-      // Actualiza la información del usuario si se proporciona un correo o contraseña
+      
       if (newTeacher.correo || newTeacher.contrasena) {
         const userData = {
-          id: editingTeacher.usuarioId,  // Incluye el ID del usuario
+          id: editingTeacher.usuarioId,  
           correo: newTeacher.correo,
           contrasena: newTeacher.contrasena
         };
 
-        console.log('Datos del usuario enviados:', userData);  // Log para verificar los datos enviados
+        console.log('Datos del usuario enviados:', userData);  
 
         await axios.put(`https://localhost:44311/usuarios/${editingTeacher.usuarioId}`, userData);
       }
 
-      // Maneja la materia si se proporcionó una nueva o seleccionada
+     
       if (newSubjectName.trim() !== '') {
         await handleAddNewSubject(newSubjectName, editingTeacher.id);
       } else if (selectedSubjectId) {
@@ -132,7 +132,7 @@ const TeachersManager = () => {
         });
       }
 
-      // Actualiza el estado local de los profesores
+    
       setTeachers((prevTeachers) =>
         prevTeachers.map((teacher) =>
           teacher.id === editingTeacher.id

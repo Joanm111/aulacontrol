@@ -111,12 +111,12 @@ const HijosPa = () => {
     const firstDayIndex = new Date(year, month, 1).getDay();
     const calendarDays = [];
 
-    // Fill the calendar with empty days until the first day of the month
+    
     for (let i = 0; i < firstDayIndex; i++) {
       calendarDays.push(<td key={`empty-${i}`} className="empty"></td>);
     }
 
-    // Fill the calendar with the days of the month
+    
     for (let day = 1; day <= daysInMonth; day++) {
       const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       const attendanceRecord = attendance.find(att => att.fecha === date);
@@ -146,12 +146,12 @@ const HijosPa = () => {
       );
     }
 
-    // Fill the rest of the calendar with empty days if necessary
+   
     while (calendarDays.length % 7 !== 0) {
       calendarDays.push(<td key={`empty-end-${calendarDays.length}`} className="empty"></td>);
     }
 
-    // Split the days into rows of 7 (weeks)
+    
     const weeks = [];
     for (let i = 0; i < calendarDays.length; i += 7) {
       weeks.push(
@@ -186,8 +186,7 @@ const HijosPa = () => {
         let heightLeft = imgHeight;
         let position = 0;
 
-        pdf.text(`Reporte de calificaciones de: ${selectedStudent.nombre}`, 10, 10); // Agrega el nombre del estudiante
-
+        pdf.text(`Reporte de calificaciones de: ${selectedStudent.nombre}`, 10, 10); 
         while (heightLeft > 0) {
           pdf.addImage(imgData, 'PNG', 10, position + 20, imgWidth, imgHeight);
           heightLeft -= pageHeight;
@@ -198,7 +197,7 @@ const HijosPa = () => {
           }
         }
 
-        // Agrega un pie de página con la fecha y el número de página
+   
         const pageCount = pdf.internal.getNumberOfPages();
         for (let i = 1; i <= pageCount; i++) {
           pdf.setPage(i);
@@ -217,7 +216,7 @@ const HijosPa = () => {
     <div className="container">
       <h1 className="mt-4 mb-4">Mis Hijos</h1>
 
-      {/* Botón de "Regresar" antes de "Ver Detalles" */}
+  
       <button className="btn btn-secondary mb-4" onClick={handleGoBack}>
         <FontAwesomeIcon icon={faChevronLeft} /> Regresar
       </button>
@@ -356,12 +355,12 @@ const HijosPa = () => {
             <p>No hay registros de conducta.</p>
           )}
 
-          {/* Botón de "Regresar" */}
+         
           <button className="btn btn-secondary mt-4 mr-2" onClick={handleGoBack}>
             <FontAwesomeIcon icon={faChevronLeft} /> Regresar
           </button>
 
-          {/* Botón para descargar en PDF */}
+         
           <button className="btn btn-primary mt-4" onClick={handleDownloadPDF}>
             <FontAwesomeIcon icon={faDownload} /> Descargar PDF
           </button>

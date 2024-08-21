@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import LineChart from './LineChart';
 import './padre.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const InicioPA = ({ setLoggedIn }) => {
+const InicioPa = ({ email, loggedIn, setLoggedIn }) => {
   const navigate = useNavigate();
   const [studentsCount, setStudentsCount] = useState(0);
-  const [gradesCount, setGradesCount] = useState(0); // Estado para la cantidad de grados
-  const [activeForumsCount, setActiveForumsCount] = useState(0); // Estado para foros activos
+  const [gradesCount, setGradesCount] = useState(0);
+  const [activeForumsCount, setActiveForumsCount] = useState(0);
   const [students, setStudents] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
   const [parentName, setParentName] = useState('');
   const [loading, setLoading] = useState(true);
-  const userEmail = localStorage.getItem('userEmail');
 
   useEffect(() => {
-    if (!userEmail) {
+    const storedEmail = localStorage.getItem('userEmail');
+    if (!storedEmail) {
       navigate('/login');
       return;
     }
@@ -27,10 +29,10 @@ const InicioPA = ({ setLoggedIn }) => {
           axios.get('https://localhost:44311/grado'),
           axios.get('https://localhost:44311/Usuarios'),
           axios.get('https://localhost:44311/estudiantes'),
-          axios.get('https://localhost:44311/foroes'), // Asumiendo que hay un endpoint para los foros
+          axios.get('https://localhost:44311/foroes'),
         ]);
 
-        const user = usersResponse.data.find(u => u.correo === userEmail);
+        const user = usersResponse.data.find(u => u.correo === storedEmail);
         if (user) {
           const parent = parentsResponse.data.find(p => p.usuarioId === user.id);
           if (parent) {
@@ -40,13 +42,11 @@ const InicioPA = ({ setLoggedIn }) => {
             setStudents(parentStudents);
             setStudentsCount(parentStudents.length);
 
-            // Obtener los IDs de los grados únicos
             const uniqueGradeIds = [...new Set(parentStudents.map(student => student.gradoId))];
-            setGradesCount(uniqueGradeIds.length); // Contar los grados únicos
+            setGradesCount(uniqueGradeIds.length);
 
-            // Filtrar los foros según los grados únicos
             const visibleForums = forumsResponse.data.filter(forum => uniqueGradeIds.includes(forum.gradoId));
-            setActiveForumsCount(visibleForums.length); // Contar los foros visibles
+            setActiveForumsCount(visibleForums.length);
           }
         }
 
@@ -57,12 +57,21 @@ const InicioPA = ({ setLoggedIn }) => {
     };
 
     fetchCounts();
-  }, [userEmail, navigate]);
+  }, [navigate]);
 
   const onLogout = () => {
     localStorage.removeItem('userEmail');
     setLoggedIn(false);
     navigate('/login');
+  };
+
+  const handleStudentClick = (student) => {
+    console.log("Actualizando gráficas para el estudiante:", student);
+    setSelectedStudent(student);
+  };
+
+  const handleCloseCharts = () => {
+    setSelectedStudent(null);
   };
 
   if (loading) {
@@ -72,7 +81,6 @@ const InicioPA = ({ setLoggedIn }) => {
   return (
     <div className="container-fluid" style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <div className="row">
-        {/* Sidebar fijo a la izquierda */}
         <nav className="col-md-2 d-md-block sidebar bg-dark">
           <div className="sidebar-content">
             <h2 className="text-white text-center mb-4">Panel de Padres</h2>
@@ -94,7 +102,6 @@ const InicioPA = ({ setLoggedIn }) => {
           </div>
         </nav>
 
-        {/* Contenido principal */}
         <main className="col-md-10 d-flex flex-column align-items-start justify-content-start pt-3 pb-2 mb-3">
           <h1 className="text-dark mb-4 title">Bienvenido, {parentName}</h1>
           <div className="d-flex justify-content-between cards-container">
@@ -112,7 +119,6 @@ const InicioPA = ({ setLoggedIn }) => {
             </div>
           </div>
 
-          {/* Tabla de estudiantes */}
           <div className="latest-tables w-100">
             <h2 className="text-dark">Mis Hijos</h2>
             <table className="table table-striped">
@@ -126,9 +132,9 @@ const InicioPA = ({ setLoggedIn }) => {
               </thead>
               <tbody>
                 {students.map((student) => (
-                  <tr key={student.id}>
+                  <tr key={student.id} onClick={() => handleStudentClick(student)} className="student-row">
                     <td>{student.id}</td>
-                    <td>{student.nombre}</td>
+                    <td className="clickable">{student.nombre}</td>
                     <td>{student.apellido}</td>
                     <td>{student.fechaNacimiento}</td>
                   </tr>
@@ -136,10 +142,37 @@ const InicioPA = ({ setLoggedIn }) => {
               </tbody>
             </table>
           </div>
+
+          {selectedStudent && (
+            <div className="w-100 mt-4 d-flex flex-column align-items-start">
+              <button className="btn btn-outline-danger mb-3" onClick={handleCloseCharts}>
+                Cerrar Gráficas
+              </button>
+              <div className="w-100 d-flex justify-content-between">
+                <div className="tardanzas-container">
+                  <h2 className="text-dark">Ausencias por Mes</h2>
+                  <LineChart 
+                    endpoint={`https://localhost:44311/Asistenciums?estudianteId=${selectedStudent.id}`} 
+                    type="ausencias" 
+                    selectedStudentId={selectedStudent.id}
+                  />
+                </div>
+
+                <div>
+                  <h2 className="text-dark">Promedio de Exámenes</h2>
+                  <LineChart 
+                    endpoint={`https://localhost:44311/Calificacions?estudianteId=${selectedStudent.id}`} 
+                    type="examenes" 
+                    selectedStudentId={selectedStudent.id}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </main>
       </div>
     </div>
   );
 };
 
-export default InicioPA;
+export default InicioPa;

@@ -1,0 +1,8 @@
+.svg-container {
+  margin-left: 100px; 
+  width: 100%; 
+}
+
+.tardanzas-container {
+  transform: translateX(200px); 
+}

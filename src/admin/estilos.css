@@ -100,7 +100,7 @@ body {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Estilos para ParentsManager */
+
 
 .container {
   max-width: 800px;
@@ -128,20 +128,20 @@ body {
   margin-bottom: 1.5rem !important;
 }
 
-/* Estilos específicos para los botones de acción en la tabla */
+
 .table-actions button {
   margin-right: 5px;
 }
 
 
-/* Profe.css */
+
 
 .sidebar {
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #343a40; /* bg-dark */
+  background-color: #343a40; 
   color: white;
   padding-top: 20px;
 }

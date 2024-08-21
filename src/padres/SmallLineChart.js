@@ -6,7 +6,7 @@ const SmallLineChart = ({ data, yLabel }) => {
 
   useEffect(() => {
     const svg = d3.select(chartRef.current);
-    svg.selectAll('*').remove(); // Limpia la gráfica antes de renderizarla de nuevo
+    svg.selectAll('*').remove(); 
 
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     const width = 300 - margin.left - margin.right;
@@ -51,7 +51,7 @@ const SmallLineChart = ({ data, yLabel }) => {
         .y(d => y(d.count || d.average))
       );
 
-  }, [data, yLabel]); // Se asegura de que useEffect se ejecute cuando los datos cambien
+  }, [data, yLabel]); 
 
   return (
     <svg ref={chartRef} width="300" height="200"></svg>

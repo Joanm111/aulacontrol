@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './estilos.css'; // Asegúrate de que estilos.css esté en la misma ubicación que este archivo
+import './estilos.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const InicioA = ({ email, setLoggedIn }) => {
@@ -34,13 +34,13 @@ const InicioA = ({ email, setLoggedIn }) => {
         const usersData = usersResponse.data;
         const usersCombined = [];
 
-        // Obtener padres y sus correos correspondientes
+        
         const parentsResponse = await axios.get('https://localhost:44311/padres');
         parentsResponse.data.forEach(parent => {
           const user = usersData.find(u => u.id === parent.usuarioId);
           if (user) {
             usersCombined.push({
-              id: user.id,  // Cambia a user.id
+              id: user.id,  
               nombre: parent.nombre,
               correo: user.correo,
               role: 'Padre'
@@ -48,13 +48,13 @@ const InicioA = ({ email, setLoggedIn }) => {
           }
         });
 
-        // Obtener profesores y sus correos correspondientes
+        
         const teachersDataResponse = await axios.get('https://localhost:44311/profesors');
         teachersDataResponse.data.forEach(teacher => {
           const user = usersData.find(u => u.id === teacher.usuarioId);
           if (user) {
             usersCombined.push({
-              id: user.id,  // Cambia a user.id
+              id: user.id,  
               nombre: teacher.nombre,
               correo: user.correo,
               role: 'Profesor'
@@ -80,7 +80,7 @@ const InicioA = ({ email, setLoggedIn }) => {
   return (
     <div className="container-fluid" style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <div className="row">
-        {/* Sidebar fijo a la izquierda */}
+      
         <nav className="col-md-2 d-md-block sidebar bg-dark">
           <div className="sidebar-content">
             <h2 className="text-white text-center mb-4">Admin Panel</h2>
@@ -100,12 +100,11 @@ const InicioA = ({ email, setLoggedIn }) => {
               Log out
             </button>
             <div className="user-info mt-4">
-              <p className="text-light text-center">{email}</p>
             </div>
           </div>
         </nav>
         
-        {/* Contenido principal */}
+       
         <main className="col-md-10 d-flex flex-column align-items-start justify-content-start pt-3 pb-2 mb-3">
           <h1 className="text-dark mb-4 title">Bienvenido ADMINISTRADOR</h1>
           <div className="d-flex justify-content-between cards-container">
@@ -127,7 +126,7 @@ const InicioA = ({ email, setLoggedIn }) => {
             </div>
           </div>
           
-          {/* Tabla de usuarios */}
+         
           <div className="latest-tables w-100">
             <h2 className="text-dark">Últimos Usuarios Agregados</h2>
             <table className="table table-striped">

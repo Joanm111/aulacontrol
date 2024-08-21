@@ -1,8 +1,8 @@
-/* Profe.css */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-/* Profe.css */
 
-/* General styles */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+
 .container {
     margin-top: 20px;
   }
@@ -12,7 +12,7 @@
     vertical-align: middle;
   }
   
-  /* Button styles */
+
   .btn {
     margin-right: 10px;
   }
@@ -21,7 +21,7 @@
     margin-right: 0;
   }
   
-  /* Form styles */
+
   .card {
     margin-top: 20px;
   }
@@ -59,7 +59,7 @@
     margin-left: 10px;
   }
   
-  /* Specific styles for action buttons */
+
   .btn-success {
     background-color: #28a745;
     border-color: #28a745;
@@ -94,16 +94,15 @@
     filter: brightness(90%);
   }
 
-  
-  /* En Materias.css */
+
 .btn-primary {
     margin-top: 10px;
   }
   
-  /* Ajustes adicionales para mejorar visibilidad del select */
+
   .form-control {
-    background-color: #fff; /* Color de fondo del select */
-    color: #495057; /* Color del texto del select */
-    border-color: #ced4da; /* Color del borde del select */
+    background-color: #fff; 
+    color: #495057; 
+    border-color: #ced4da; 
   }
   

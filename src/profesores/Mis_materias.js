@@ -89,8 +89,8 @@ const MisMaterias = () => {
       console.log(`Materia ID: ${materiaId}`);
       const students = await fetchStudents(gradoId);
       setStudents(students);
-      setSelectedMateriaId(materiaId); // Asignar la materia seleccionada
-      setFormType(''); // Clear form type when showing students
+      setSelectedMateriaId(materiaId); 
+      setFormType(''); 
     } catch (error) {
       console.error('Error showing students:', error);
     }
@@ -190,7 +190,7 @@ const MisMaterias = () => {
           descripcion: conductDescription,
           fecha: today,
           estudianteId: selectedStudent,
-          conductum: ["bien"], // Ejemplo de uso del array
+          conductum: ["bien"],
         };
 
         console.log('Sending conduct data:', conductData);
@@ -201,7 +201,7 @@ const MisMaterias = () => {
           await axios.post('https://localhost:44311/Conductums', conductData);
         }
 
-        await fetchConducts(selectedStudent); // Actualiza la lista de conductas
+        await fetchConducts(selectedStudent); 
       } else if (formType === 'Reporte') {
         const reportData = {
           id: existingReportId || 0,
@@ -219,7 +219,7 @@ const MisMaterias = () => {
           await axios.post('https://localhost:44311/Reportes', reportData);
         }
 
-        await fetchReports(selectedStudent); // Actualiza la lista de reportes
+        await fetchReports(selectedStudent); 
       }
 
       clearForm();
@@ -492,7 +492,7 @@ const MisMaterias = () => {
             )}
           </div>
 
-          {/* Mostrar la lista de observaciones existentes si se selecciona Observación */}
+          
           {formType === 'Conducta' && conducts.length > 0 && (
             <div className="mt-4">
               <h4> Observaciones Anteriores</h4>
@@ -512,7 +512,7 @@ const MisMaterias = () => {
             </div>
           )}
 
-          {/* Mostrar la lista de reportes existentes si se selecciona Reporte */}
+          
           {formType === 'Reporte' && reports.length > 0 && (
             <div className="mt-4">
               <h4>Reportes Anteriores</h4>

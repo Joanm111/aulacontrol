@@ -1,20 +1,20 @@
-/* Estilos generales */
+
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body {
-  background-color: #f0f0f0; /* Color de fondo para todo el cuerpo */
+  background-color: #f0f0f0;
 }
 
 .sidebar {
-  width: 200px; /* Ancho del sidebar */
-  height: 100%; /* Altura completa del sidebar */
+  width: 200px; 
+  height: 100%; 
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100; /* Asegura que esté por encima del contenido principal */
-  overflow-y: auto; /* Permite hacer scroll en caso de contenido largo */
-  background-color: #343a40; /* Color de fondo del sidebar */
-  padding-top: 20px; /* Espacio superior */
+  z-index: 100; 
+  overflow-y: auto; 
+  background-color: #343a40; 
+  padding-top: 20px; 
 }
 
 .sidebar-content {
@@ -27,15 +27,15 @@ body {
 }
 
 .main-content {
-  margin-left: 200px; /* Espacio a la izquierda del contenido principal */
-  padding: 20px; /* Espaciado interno */
+  margin-left: 200px; 
+  padding: 20px; 
 }
 
 .card {
-  border-radius: 10px; /* Bordes redondeados para las tarjetas */
-  background-color: #007bff; /* Color de fondo de las cards (azul) */
-  color: white; /* Texto en color blanco */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  border-radius: 10px; 
+  background-color: #007bff; 
+  color: white; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   padding: 20px;
 }
 
@@ -44,12 +44,12 @@ body {
 }
 
 .text-white {
-  color: white; /* Texto blanco */
+  color: white; 
 }
 
 .title {
-  margin-left: 200px; /* Ajusta este valor según sea necesario */
-  margin-top: 20px; /* Espacio adicional superior para mover el texto hacia abajo */
+  margin-left: 200px; 
+  margin-top: 20px; 
 }
 
 .cards-container {
@@ -62,7 +62,7 @@ body {
 
 .card {
   flex: 1 1 calc(33.33% - 20px);
-  max-width: 250px; /* Ajusta el ancho máximo de las cards según sea necesario */
+  max-width: 250px; 
 }
 
 .latest-tables {
@@ -108,7 +108,7 @@ body {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Estilos para ParentsManager */
+
 
 .container {
   max-width: 800px;
@@ -136,7 +136,7 @@ body {
   margin-bottom: 1.5rem !important;
 }
 
-/* Estilos específicos para los botones de acción en la tabla */
+
 .table-actions button {
   margin-right: 5px;
 }

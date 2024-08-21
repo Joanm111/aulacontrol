@@ -24,9 +24,9 @@ const ForoPa = () => {
     if (selectedTopic) {
       const intervalId = setInterval(() => {
         fetchComments(selectedTopic);
-      }, 5000); // Polling every 5 seconds
+      }, 5000); 
 
-      return () => clearInterval(intervalId); // Cleanup interval on unmount
+      return () => clearInterval(intervalId); 
     }
   }, [selectedTopic]);
 
@@ -46,12 +46,12 @@ const ForoPa = () => {
         if (parent) {
           setParents(prev => ({ ...prev, [user.id]: parent.nombre }));
 
-          // Obtener los grados de los estudiantes asociados con el padre
+    
           const parentStudents = studentsResponse.data.filter(student => student.padreId === parent.id);
           const grades = parentStudents.map(student => student.gradoId);
           setStudentGrades(grades);
 
-          // Filtrar foros según los grados
+          
           const topicsResponse = await axios.get('https://localhost:44311/Foroes');
           const filteredTopics = topicsResponse.data.filter(topic => grades.includes(topic.gradoId));
           setTopics(filteredTopics);
@@ -97,7 +97,7 @@ const ForoPa = () => {
       };
       await axios.post('https://localhost:44311/ComentarioForoes', newCommentData);
       setNewComment('');
-      fetchComments(selectedTopic); // Refresh comments
+      fetchComments(selectedTopic); 
     } catch (error) {
       console.error('Error creating comment:', error);
     }
